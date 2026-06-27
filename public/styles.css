@@ -1,0 +1,215 @@
+:root {
+  color-scheme: dark;
+  --bg: #0a1020;
+  --bg-alt: #111936;
+  --panel: rgba(13, 20, 39, 0.84);
+  --panel-border: rgba(255, 255, 255, 0.1);
+  --text: #edf2ff;
+  --muted: #9fb0d0;
+  --accent: #68d5ff;
+  --accent-2: #ff8a5b;
+  --success: #68f0b6;
+  --danger: #ff7f9a;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Space Grotesk', sans-serif;
+  line-height: 1.5;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(104, 213, 255, 0.18), transparent 28%),
+    radial-gradient(circle at top right, rgba(255, 138, 91, 0.16), transparent 24%),
+    linear-gradient(180deg, #0a1020 0%, #0c1327 48%, #090d18 100%);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), transparent 80%);
+}
+
+.shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0 56px;
+  display: grid;
+  gap: 20px;
+}
+
+.hero, .panel {
+  min-width: 0;
+  border: 1px solid var(--panel-border);
+  background: var(--panel);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+  border-radius: 24px;
+}
+
+.hero {
+  padding: 28px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(104, 213, 255, 0.12);
+  color: var(--accent);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 14px 0 10px;
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  line-height: 0.98;
+  max-width: 12ch;
+}
+
+.hero p {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.panel {
+  padding: 22px;
+}
+
+.panel-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.panel-header h2, h3, h4 {
+  margin: 0;
+}
+
+.panel-header span, .status {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.response-shell {
+  padding: 18px;
+  border-radius: 20px;
+  background: #f4f6fb;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  overflow: hidden;
+}
+
+.response-json {
+  margin: 0;
+  min-height: 420px;
+  max-height: 68vh;
+  overflow: auto;
+  padding: 20px;
+  border-radius: 14px;
+  background: #f4f6fb;
+  color: #10233d;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  white-space: pre;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+textarea {
+  width: 100%;
+  min-height: 230px;
+  max-width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 18px;
+  resize: vertical;
+  color: var(--text);
+  background: rgba(7, 10, 19, 0.72);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+button {
+  appearance: none;
+  border: 0;
+  border-radius: 14px;
+  padding: 13px 18px;
+  font: inherit;
+  font-weight: 700;
+  color: #08111f;
+  background: linear-gradient(135deg, var(--accent), #b6f0ff);
+  cursor: pointer;
+}
+
+button.secondary {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.status {
+  margin: 12px 0 0;
+  min-height: 1.5em;
+}
+
+@media (max-width: 720px) {
+  .shell {
+    width: min(100%, calc(100% - 20px));
+    padding: 20px 0 32px;
+  }
+
+  .hero, .panel {
+    border-radius: 20px;
+    padding: 18px;
+  }
+
+  h1 {
+    max-width: none;
+  }
+
+  .summary-grid,
+  .validation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .response-shell {
+    padding: 12px;
+  }
+
+  .response-json {
+    min-height: 320px;
+    max-height: 60vh;
+    padding: 14px;
+    font-size: 0.84rem;
+  }
+}

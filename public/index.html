@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hierarchy Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div class="badge">Chitkara Full Stack Challenge</div>
+        <h1>Build trees from edge lists and ship the result.</h1>
+        <p>
+          Paste the node array, submit it to /bfh1, and inspect the structured output with invalid entries, duplicate edges, cycles, and tree depth.
+        </p>
+      </section>
+
+      <section class="panel form-panel">
+        <div class="panel-header">
+          <h2>Request Payload</h2>
+          <span>POST /bfh1</span>
+        </div>
+        <textarea id="input" spellcheck="false">{
+  "data": [
+    "A->B",
+    "A->C",
+    "B->D",
+    "C->E",
+    "E->F"
+  ]
+}</textarea>
+        <div class="actions">
+          <button id="submit">Run analysis</button>
+          <button id="sample" class="secondary">Load challenge sample</button>
+        </div>
+        <p id="status" class="status">Ready.</p>
+      </section>
+
+      <section class="panel results-panel">
+        <div class="panel-header">
+          <h2>Expected Response</h2>
+          <span>Rendered live</span>
+        </div>
+        <div class="response-shell">
+          <pre id="responseJson" class="response-json">{}</pre>
+        </div>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
